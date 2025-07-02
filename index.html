@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Services Inquiry</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Website Services Initial Consultation</h1>
+            <p>Welcome! This form will help us understand your needs and vision for your new website. Please be as detailed as possible. The more information you provide, the better we can assist you in creating a website that truly represents your brand and achieves your goals.</p>
+        </header>
+
+        <form id="inquiryForm">
+            <!-- Step 1: Basic Information -->
+            <div class="form-step" id="step-1">
+                <h2>Step 1: Basic Information</h2>
+                <p>Let's start with some basics about you and your project.</p>
+                <div class="form-group">
+                    <label for="companyName">Company/Brand Name (or Your Name if personal):*</label>
+                    <input type="text" id="companyName" name="companyName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactName">Contact Person Name:*</label>
+                    <input type="text" id="contactName" name="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address:*</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="existingWebsite">Current Website URL (if any):</label>
+                    <input type="url" id="existingWebsite" name="existingWebsite" placeholder="https://www.example.com">
+                </div>
+                <div class="form-group">
+                    <label for="domainIdeas">Do you have a domain name in mind? Or ideas for one?</label>
+                    <textarea id="domainIdeas" name="domainIdeas" placeholder="e.g., myawesomesite.com, brandname.net"></textarea>
+                </div>
+                 <div class="form-group">
+                    <label>Is your company name officially registered?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="registeredYes" name="companyRegistered" value="Yes"><label for="registeredYes">Yes</label>
+                        <input type="radio" id="registeredNo" name="companyRegistered" value="No"><label for="registeredNo">No</label>
+                        <input type="radio" id="registeredNA" name="companyRegistered" value="N/A"><label for="registeredNA">N/A (e.g. personal site)</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Purpose & Audience -->
+            <div class="form-step" id="step-2" style="display:none;">
+                <h2>Step 2: Purpose & Audience</h2>
+                <p>Understanding the 'why' and 'for whom' of your website is crucial.</p>
+                <div class="form-group">
+                    <label for="websiteGoal">What is the primary goal of your website?*</label>
+                    <textarea id="websiteGoal" name="websiteGoal" required placeholder="e.g., Sell products/services, generate leads, provide information, build a community, showcase a portfolio, personal branding, share a blog..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="targetAudience">Who is your target audience?*</label>
+                    <textarea id="targetAudience" name="targetAudience" required placeholder="e.g., Age group, interests, profession, specific needs they have..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="keyMessage">What is the key message or value proposition you want to communicate?</label>
+                    <textarea id="keyMessage" name="keyMessage" placeholder="e.g., We offer the best quality at affordable prices, Your one-stop solution for X..."></textarea>
+                </div>
+            </div>
+
+            <!-- Step 3: Content Strategy -->
+            <div class="form-step" id="step-3" style="display:none;">
+                <h2>Step 3: Content Strategy</h2>
+                <p>Content is king! What will your website say and show?</p>
+                <div class="form-group">
+                    <label>What types of content do you plan to feature? (Check all that apply)*</label>
+                    <div class="checkbox-group required">
+                        <input type="checkbox" id="contentText" name="contentTypes" value="Text (articles, descriptions)"><label for="contentText">Text (articles, descriptions)</label><br>
+                        <input type="checkbox" id="contentImages" name="contentTypes" value="Images (photos, graphics)"><label for="contentImages">Images (photos, graphics)</label><br>
+                        <input type="checkbox" id="contentVideos" name="contentTypes" value="Videos"><label for="contentVideos">Videos</label><br>
+                        <input type="checkbox" id="contentBlog" name="contentTypes" value="Blog / Articles"><label for="contentBlog">Blog / Articles</label><br>
+                        <input type="checkbox" id="contentPortfolio" name="contentTypes" value="Portfolio / Case Studies"><label for="contentPortfolio">Portfolio / Case Studies</label><br>
+                        <input type="checkbox" id="contentTestimonials" name="contentTypes" value="Testimonials / Reviews"><label for="contentTestimonials">Testimonials / Reviews</label><br>
+                        <input type="checkbox" id="contentProducts" name="contentTypes" value="Product Listings"><label for="contentProducts">Product Listings</label><br>
+                        <input type="checkbox" id="contentServices" name="contentTypes" value="Service Descriptions"><label for="contentServices">Service Descriptions</label><br>
+                        <input type="checkbox" id="contentOther" name="contentTypesOther" value="Other"><label for="contentOther">Other (please specify below)</label>
+                    </div>
+                    <textarea id="contentOtherSpecify" name="contentOtherSpecify" placeholder="Specify other content types" style="margin-top:10px;"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="contentSource">Who will be responsible for creating and providing the content?</label>
+                    <select id="contentSource" name="contentSource">
+                        <option value="">Select an option</option>
+                        <option value="client_provides_all">I will provide all content</option>
+                        <option value="client_provides_some">I will provide some, need help with some</option>
+                        <option value="need_content_creation">I need assistance with content creation</option>
+                        <option value="tbd">To be determined</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="updateFrequency">How often do you anticipate updating the website content?</label>
+                    <select id="updateFrequency" name="updateFrequency">
+                        <option value="">Select an option</option>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                        <option value="quarterly">Quarterly</option>
+                        <option value="rarely">Rarely, only for major updates</option>
+                        <option value="tbd">To be determined</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Step 4: Functionality Needs -->
+            <div class="form-step" id="step-4" style="display:none;">
+                <h2>Step 4: Functionality Needs</h2>
+                <p>What should your website *do*?</p>
+                <div class="form-group">
+                    <label>What features and functionalities are required? (Check all that apply)</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="funcEcomm" name="functionality" value="E-commerce (sell products/services)"><label for="funcEcomm">E-commerce (sell products/services online)</label><br>
+                        <input type="checkbox" id="funcPayments" name="functionality" value="Online Payments (even if not full e-comm)"><label for="funcPayments">Online Payments (even if not full e-comm)</label><br>
+                        <input type="checkbox" id="funcBlog" name="functionality" value="Blog or News section"><label for="funcBlog">Blog or News section</label><br>
+                        <input type="checkbox" id="funcPortfolio" name="functionality" value="Portfolio / Gallery"><label for="funcPortfolio">Portfolio / Gallery</label><br>
+                        <input type="checkbox" id="funcForms" name="functionality" value="Contact Forms / Inquiry Forms"><label for="funcForms">Contact Forms / Inquiry Forms</label><br>
+                        <input type="checkbox" id="funcNewsletter" name="functionality" value="Newsletter / Mailing List Signup"><label for="funcNewsletter">Newsletter / Mailing List Signup (Build List)</label><br>
+                        <input type="checkbox" id="funcMembers" name="functionality" value="User Accounts / Membership Area"><label for="funcMembers">User Accounts / Membership Area</label><br>
+                        <input type="checkbox" id="funcBooking" name="functionality" value="Booking / Appointment System"><label for="funcBooking">Booking / Appointment System</label><br>
+                        <input type="checkbox" id="funcForum" name="functionality" value="Forum / Community Features"><label for="funcForum">Forum / Community Features</label><br>
+                        <input type="checkbox" id="funcSearch" name="functionality" value="Site Search Functionality"><label for="funcSearch">Site Search Functionality</label><br>
+                        <input type="checkbox" id="funcMultilingual" name="functionality" value="Multi-language Support"><label for="funcMultilingual">Multi-language Support</label><br>
+                        <input type="checkbox" id="funcOtherFunc" name="functionalityOther" value="Other"><label for="funcOtherFunc">Other (please specify below)</label>
+                    </div>
+                    <textarea id="funcOtherSpecify" name="funcOtherSpecify" placeholder="Specify other functionalities" style="margin-top:10px;"></textarea>
+                </div>
+            </div>
+
+            <!-- Step 5: Design & Branding -->
+            <div class="form-step" id="step-5" style="display:none;">
+                <h2>Step 5: Design & Branding</h2>
+                <p>How should your website look and feel?</p>
+                <div class="form-group">
+                    <label for="brandGuidelines">Do you have existing brand guidelines (logo, color palette, fonts)? If yes, can you provide them?</label>
+                    <textarea id="brandGuidelines" name="brandGuidelines" placeholder="e.g., Yes, we have a logo and color codes. No, we need help with branding."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="preferredStyle">What is your preferred style/aesthetic for the website?</label>
+                    <textarea id="preferredStyle" name="preferredStyle" placeholder="e.g., Modern, minimalist, professional/corporate, playful, artistic, vintage, luxurious..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="websitesLiked">Please list 2-3 websites you like the design of (and why, if possible).</label>
+                    <textarea id="websitesLiked" name="websitesLiked" placeholder="e.g., www.example1.com (clean layout), www.example2.com (great use of color)..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="websitesDisliked">Please list any websites you dislike (and why, if possible).</label>
+                    <textarea id="websitesDisliked" name="websitesDisliked" placeholder="e.g., www.example3.com (too cluttered), www.example4.com (hard to navigate)..."></textarea>
+                </div>
+            </div>
+
+            <!-- Step 6: Social Media & Marketing -->
+            <div class="form-step" id="step-6" style="display:none;">
+                <h2>Step 6: Social Media & Marketing</h2>
+                <p>How will your website connect with your broader online presence?</p>
+                <div class="form-group">
+                    <label for="socialMediaPlatforms">Which social media platforms do you use or plan to use? How should they be integrated?</label>
+                    <textarea id="socialMediaPlatforms" name="socialMediaPlatforms" placeholder="e.g., Facebook, Instagram, LinkedIn, X (Twitter), TikTok. We want links to profiles, share buttons, embedded feeds..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Will the website feed content to social media, and will social media link back to the website?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="socialFeedYes" name="socialFeed" value="Yes"><label for="socialFeedYes">Yes</label>
+                        <input type="radio" id="socialFeedNo" name="socialFeed" value="No"><label for="socialFeedNo">No</label>
+                        <input type="radio" id="socialFeedMaybe" name="socialFeed" value="Maybe/Unsure"><label for="socialFeedMaybe">Maybe/Unsure</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="seoNeeds">Are you interested in Search Engine Optimization (SEO) services?</label>
+                    <select id="seoNeeds" name="seoNeeds">
+                        <option value="">Select an option</option>
+                        <option value="yes_basic">Yes, basic on-page SEO</option>
+                        <option value="yes_advanced">Yes, ongoing SEO strategy</option>
+                        <option value="no">No, not at this time</option>
+                        <option value="unsure">Unsure, would like to learn more</option>
+                    </select>
+                </div>
+                 <div class="form-group">
+                    <label for="analyticsNeeds">Do you need website analytics setup (e.g., Google Analytics)?</label>
+                     <div class="radio-group">
+                        <input type="radio" id="analyticsYes" name="analyticsSetup" value="Yes"><label for="analyticsYes">Yes</label>
+                        <input type="radio" id="analyticsNo" name="analyticsSetup" value="No"><label for="analyticsNo">No</label>
+                        <input type="radio" id="analyticsAlready" name="analyticsSetup" value="Already have it"><label for="analyticsAlready">Already have it</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="advertisingPlans">Do you have any plans for online advertising (e.g., Google Ads, Social Media Ads)?</label>
+                    <textarea id="advertisingPlans" name="advertisingPlans" placeholder="e.g., Yes, planning a Facebook campaign. No current plans."></textarea>
+                </div>
+            </div>
+
+            <!-- Step 7: Advanced Features & Technicals -->
+            <div class="form-step" id="step-7" style="display:none;">
+                <h2>Step 7: Advanced Features & Technicals</h2>
+                <p>Let's explore any specific technologies or advanced functionalities you're interested in.</p>
+                <div class="form-group">
+                    <label>Are you interested in incorporating AI workflows? (e.g., AI-powered content suggestions, customer service automation, data analysis)</label>
+                    <div class="radio-group">
+                        <input type="radio" id="aiWorkflowYes" name="aiWorkflow" value="Yes"><label for="aiWorkflowYes">Yes</label>
+                        <input type="radio" id="aiWorkflowNo" name="aiWorkflow" value="No"><label for="aiWorkflowNo">No</label>
+                        <input type="radio" id="aiWorkflowMaybe" name="aiWorkflow" value="Maybe/Learn More"><label for="aiWorkflowMaybe">Maybe/Want to learn more</label>
+                    </div>
+                    <textarea id="aiWorkflowDetails" name="aiWorkflowDetails" placeholder="If yes or maybe, any specific AI ideas?" style="margin-top:10px;"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Are you interested in having a Chatbot on your website?</label>
+                     <div class="radio-group">
+                        <input type="radio" id="chatbotYes" name="chatbot" value="Yes"><label for="chatbotYes">Yes</label>
+                        <input type="radio" id="chatbotNo" name="chatbot" value="No"><label for="chatbotNo">No</label>
+                        <input type="radio" id="chatbotMaybe" name="chatbot" value="Maybe/Learn More"><label for="chatbotMaybe">Maybe/Want to learn more</label>
+                    </div>
+                    <textarea id="chatbotDetails" name="chatbotDetails" placeholder="If yes or maybe, any specific requirements for the chatbot?" style="margin-top:10px;"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="integrations">Are there any specific third-party services or APIs that need to be integrated?</label>
+                    <textarea id="integrations" name="integrations" placeholder="e.g., CRM (Salesforce, HubSpot), payment gateways (Stripe, PayPal beyond standard e-comm), specific APIs..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="hostingPreference">Do you have any hosting preferences or an existing hosting provider?</label>
+                    <input type="text" id="hostingPreference" name="hostingPreference">
+                </div>
+                 <div class="form-group">
+                    <label for="maintenanceNeeds">What are your expectations for ongoing website maintenance and support?</label>
+                    <select id="maintenanceNeeds" name="maintenanceNeeds">
+                        <option value="">Select an option</option>
+                        <option value="self_manage">I plan to manage it myself</option>
+                        <option value="training_needed">I'd like training to manage it myself</option>
+                        <option value="retainer_support">I'm looking for ongoing support/retainer</option>
+                        <option value="tbd">To be determined</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Step 8: Budget & Timeline -->
+            <div class="form-step" id="step-8" style="display:none;">
+                <h2>Step 8: Budget & Timeline</h2>
+                <p>Understanding your budget and timeline helps us propose realistic solutions.</p>
+                <div class="form-group">
+                    <label for="budgetRange">What is your approximate budget range for this project?</label>
+                    <select id="budgetRange" name="budgetRange">
+                        <option value="">Select a range</option>
+                        <option value="<1000">&lt; $1,000</option>
+                        <option value="1000-3000">$1,000 - $3,000</option>
+                        <option value="3000-5000">$3,000 - $5,000</option>
+                        <option value="5000-10000">$5,000 - $10,000</option>
+                        <option value="10000-20000">$10,000 - $20,000</option>
+                        <option value=">20000">&gt; $20,000</option>
+                        <option value="prefer_not_to_say">Prefer not to say at this time</option>
+                        <option value="flexible_discuss">Flexible / Open to discussion based on scope</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="desiredTimeline">What is your desired launch timeline for the website?</label>
+                    <input type="text" id="desiredTimeline" name="desiredTimeline" placeholder="e.g., Within 1 month, 2-3 months, As soon as possible, No rush">
+                </div>
+                <div class="form-group">
+                    <label for="criticalDeadlines">Are there any critical deadlines or specific launch dates we should be aware of?</label>
+                    <input type="text" id="criticalDeadlines" name="criticalDeadlines">
+                </div>
+            </div>
+
+            <!-- Step 9: Additional Information -->
+            <div class="form-step" id="step-9" style="display:none;">
+                <h2>Step 9: Additional Information</h2>
+                <p>Is there anything else you'd like to share or any questions you have for us at this stage?</p>
+                <div class="form-group">
+                    <label for="additionalInfo">Comments, questions, or any other details:</label>
+                    <textarea id="additionalInfo" name="additionalInfo" rows="6"></textarea>
+                </div>
+                <p>Thank you for taking the time to fill out this detailed form. This information will greatly help us in preparing for our consultation.</p>
+            </div>
+
+            <div class="form-navigation">
+                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                <button type="submit" id="submitBtn" style="display:none;">Submit Inquiry</button>
+            </div>
+
+            <!-- Circles which indicates the steps of the form: -->
+            <div style="text-align:center;margin-top:40px;">
+                <span class="step-indicator"></span>
+                <span class="step-indicator"></span>
+                <span class="step-indicator"></span>
+                <span class="step-indicator"></span>
+                <span class="step-indicator"></span>
+                <span class="step-indicator"></span>
+                <span class="step-indicator"></span>
+                <span class="step-indicator"></span>
+                <span class="step-indicator"></span>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
