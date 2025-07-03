@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Services Inquiry</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -13,7 +15,7 @@
             <p>Welcome! This form will help us understand your needs and vision for your new website. Please be as detailed as possible. The more information you provide, the better we can assist you in creating a website that truly represents your brand and achieves your goals.</p>
         </header>
 
-        <form id="inquiryForm">
+        <form id="contactForm">
             <!-- Step 1: Basic Information -->
             <div class="form-step" id="step-1">
                 <h2>Step 1: Basic Information</h2>
@@ -281,8 +283,8 @@
             </div>
 
             <div class="form-navigation">
-                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                <button type="button" id="prevBtn">Previous</button>
+                <button type="button" id="nextBtn">Next</button>
                 <button type="submit" id="submitBtn" style="display:none;">Submit Inquiry</button>
             </div>
 
