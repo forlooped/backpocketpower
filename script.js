@@ -1,9 +1,51 @@
 let currentStep = 0; // Current step is 0
 const steps = document.getElementsByClassName("form-step");
 const stepIndicators = document.getElementsByClassName("step-indicator");
+const prevButton = document.getElementById("prevBtn");
+const nextButton = document.getElementById("nextBtn");
+const submitButton = document.getElementById("submitBtn"); // Renamed from submitBtn for clarity
+const form = document.getElementById("contactForm");
+
+// EmailJS Configuration
+const EMAILJS_PUBLIC_KEY = 'vMhsvwHn1MFag9xE4';
+const EMAILJS_SERVICE_ID = 'service_64s9ffx';
+const EMAILJS_TEMPLATE_ID = 'template_t1bkgkv';
+
+emailjs.init(EMAILJS_PUBLIC_KEY);
 
 document.addEventListener("DOMContentLoaded", function() {
     showStep(currentStep);
+
+    if(prevButton) {
+        prevButton.addEventListener("click", () => nextPrev(-1));
+    }
+    if(nextButton) {
+        nextButton.addEventListener("click", () => nextPrev(1));
+    }
+    if(submitButton) { // This is the final submit button
+        submitButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            if (!validateForm()) { // Validate the last step before submitting
+                return false;
+            }
+            submitForm();
+        });
+    }
+    if(form) {
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();
+            // This ensures that if the form is submitted by pressing Enter on the last field
+            // (though our setup tries to prevent this by having a button of type "button" vs "submit" for "Next")
+            // or if the "Next" button somehow submits the form, we still go through our logic.
+            // In our current setup, only the #submitBtn should trigger the final submission.
+            if (currentStep === steps.length - 1) { // Only submit if on the last step
+                 if (!validateForm()) {
+                    return false;
+                }
+                submitForm();
+            }
+        });
+    }
 });
 
 function showStep(n) {
@@ -186,44 +228,26 @@ function submitForm() {
     // Final validation of all fields (optional, as we validate step-by-step)
     // For now, assume step-by-step validation is sufficient.
     
-    // Collect form data
-    const formData = new FormData(document.getElementById("inquiryForm"));
-    console.log("Form Data Submitted:");
-    for (let [key, value] of formData.entries()) {
-        console.log(key + ": " + value);
-    }
-    
-    // Display a confirmation message (or send data to a server)
-    document.getElementById("inquiryForm").innerHTML = "<h2>Thank You!</h2><p>Your inquiry has been submitted successfully. We will be in touch with you shortly.</p>";
-    
-    // Hide step indicators and navigation buttons if form is replaced
-    if (document.querySelector(".form-navigation")) {
-        document.querySelector(".form-navigation").style.display = "none";
-    }
-    if (document.querySelector("div[style*='text-align:center;margin-top:40px;']")) {
-        document.querySelector("div[style*='text-align:center;margin-top:40px;']").style.display = "none";
-    }
+    // Disable submit button to prevent multiple submissions
+    if(submitButton) submitButton.disabled = true;
+    if(nextButton && currentStep === steps.length -1) nextButton.disabled = true; // If next button acts as submit
+
+    console.log("Attempting to send email via EmailJS...");
+
+    emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, "#contactForm")
+        .then(function(response) {
+           console.log('SUCCESS!', response.status, response.text);
+           window.location.href = "thankyou.html"; // Redirect to thank you page
+        }, function(error) {
+           console.log('FAILED...', error);
+           alert("Failed to send message. Error: " + JSON.stringify(error) + "\nPlease try again or contact us directly.");
+           // Re-enable submit button if sending failed
+           if(submitButton) submitButton.disabled = false;
+           if(nextButton && currentStep === steps.length -1) nextButton.disabled = false;
+        });
 }
 
-// Attach submitForm to the actual submit button if it's separate
-const submitButton = document.getElementById("submitBtn");
-if (submitButton) {
-    submitButton.addEventListener("click", function(event) {
-        event.preventDefault(); // Prevent default form submission
-        if (!validateForm()) { // Validate the last step before submitting
-            return false;
-        }
-        submitForm();
-    });
-}
-
-// Ensure form doesn't submit via default HTML submit action
-document.getElementById("inquiryForm").addEventListener("submit", function(event) {
-    event.preventDefault(); 
-    // This is another place to call submitForm if enter is pressed on the last field,
-    // but our button logic should mostly handle it.
-    // However, if the "Next" button becomes type="submit" on the last step, this would trigger.
-    // For now, our nextBtn changes to "Submit" text but doesn't change type.
-    // The separate submitBtn is shown instead.
-});
+// Note: The event listener for the submitButton and the form itself have been moved to DOMContentLoaded
+// to ensure 'contactForm' and 'submitBtn' elements are available and to consolidate event listener setup.
+// The reference to 'inquiryForm' was also updated to 'contactForm' within those listeners.
 
